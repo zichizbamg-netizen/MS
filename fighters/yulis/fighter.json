@@ -1,9 +1,0 @@
-{
-  "id": "yulis",
-  "name": "Yulis",
-  "title": "Guerrera Tecnológica",
-  "default_weapon": "laser_gun",
-  "available_weapons": ["laser_gun", "golden_sword"],
-  "portrait": "../assets/characters/yulis/portrait.png",
-  "battle_sprite": "../assets/characters/yulis/battle.png"
-}

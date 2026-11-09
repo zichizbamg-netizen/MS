@@ -1,9 +1,0 @@
-{
-  "id": "zichiz",
-  "name": "Zichiz",
-  "title": "Maestro de Espadas",
-  "default_weapon": "iron_sword",
-  "available_weapons": ["iron_sword", "golden_sword"],
-  "portrait": "../assets/characters/zichiz/portrait.png",
-  "battle_sprite": "../assets/characters/zichiz/battle.png"
-}
