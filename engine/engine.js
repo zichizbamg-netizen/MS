@@ -10,36 +10,33 @@ export class FightingEngine {
     this.running = false; this.accumulator = 0; this.lastTime = 0; this.resultSent = false;
   }
 
-  async initialize(characterIds, weaponIds = []) {
+  async initialize(characterIds, weaponIds = [], outfitIds = []) {
     this.catalog = await loadJson('data/catalog.json');
     this.config = await loadJson(this.catalog.engine_config);
+    const roster = await loadJson(this.catalog.story_roster);
+    const outfits = await loadJson(this.catalog.story_outfits);
     const fighters = await Promise.all(characterIds.map(async (id, index) => {
-      let record;
-      try { record = await loadJson(`data/story_roster.json`); record = record[id]; }
-      catch { record = null; }
+      let record = roster[id];
       if (!record) {
         const entry = this.catalog.fighters.find((item) => item.id === id);
         if (!entry) throw new Error(`Unknown fighter: ${id}`);
-        const directory = entry.data.replace(/\/fighter\.json$/, '');
-        record = await loadCharacterBundle(directory);
+        record = await loadCharacterBundle(entry.data.replace(/\/fighter\.json$/, ''));
       }
       const fighterData = record.fighter;
       const weaponId = weaponIds[index] || fighterData.default_weapon;
-      if (fighterData.available_weapons && !fighterData.available_weapons.includes(weaponId)) {
-        throw new Error(`${weaponId} is not available to ${fighterData.name}.`);
-      }
+      if (fighterData.available_weapons && !fighterData.available_weapons.includes(weaponId)) throw new Error(`${weaponId} is not available to ${fighterData.name}.`);
       const weaponPath = this.catalog.weapons[weaponId];
       if (!weaponPath) throw new Error(`Missing weapon data: ${weaponId}`);
       const weapon = await loadWeaponBundle(weaponPath);
       const requiredForm = weapon.weapon.availability?.required_transformation;
-      if (requiredForm && fighterData.form !== requiredForm && !(requiredForm === 'golden_mode' && fighterData.form === 'gold_armor')) {
-        throw new Error(`${weapon.weapon.name} requires ${requiredForm}.`);
-      }
-      return { bundle: record, weapon };
+      if (requiredForm && fighterData.form !== requiredForm && !(requiredForm === 'golden_mode' && fighterData.form === 'gold_armor')) throw new Error(`${weapon.weapon.name} requires ${requiredForm}.`);
+      const outfitId = outfitIds[index] || 'normal';
+      const outfit = outfits[id]?.[outfitId] ?? { id: outfitId, name: outfitId, color: '#f1c84b' };
+      return { bundle: record, weapon, outfit };
     }));
     this.fighters = [
-      new Fighter(fighters[0].bundle, fighters[0].weapon, 'p1', this.config.stage.width * 0.35, this.config),
-      new Fighter(fighters[1].bundle, fighters[1].weapon, 'p2', this.config.stage.width * 0.65, this.config)
+      new Fighter(fighters[0].bundle, fighters[0].weapon, 'p1', this.config.stage.width * 0.35, this.config, fighters[0].outfit),
+      new Fighter(fighters[1].bundle, fighters[1].weapon, 'p2', this.config.stage.width * 0.65, this.config, fighters[1].outfit)
     ];
     this.input = new InputManager(this.config.controls);
     this.world = new CombatWorld(this.fighters, this.config);

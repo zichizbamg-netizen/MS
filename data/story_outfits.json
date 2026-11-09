@@ -1,0 +1,27 @@
+{
+  "zichiz": {
+    "normal": { "name": "Normal", "color": "#f1c84b", "unlock": "default" },
+    "evil": { "name": "Zichiz Maligno", "color": "#b44b68", "unlock": "mission_dual_soul" },
+    "training": { "name": "Entrenamiento", "color": "#62b6a8", "unlock": "default" },
+    "armor": { "name": "Armadura", "color": "#8992a8", "unlock": "future" }
+  },
+  "yulis": {
+    "normal": { "name": "Traje Tecnológico Azul", "color": "#4ac7ed", "unlock": "default" },
+    "tech_pink": { "name": "Traje Tecnológico Rosa", "color": "#e783bd", "unlock": "future" }
+  },
+  "rihoga": {
+    "normal": { "name": "Normal", "color": "#87bd75", "unlock": "default" }
+  },
+  "zihoga": {
+    "normal": { "name": "Fusión", "color": "#a783d3", "unlock": "default" }
+  },
+  "richiz": {
+    "normal": { "name": "Fusión", "color": "#d39b66", "unlock": "default" }
+  },
+  "zichiz_gold": {
+    "normal": { "name": "Gold Armor", "color": "#e4ad43", "unlock": "mission_destiny_edge" }
+  },
+  "yulis_gold": {
+    "normal": { "name": "Gold Armor", "color": "#e4ad43", "unlock": "mission_destiny_edge" }
+  }
+}

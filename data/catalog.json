@@ -15,5 +15,6 @@
   },
   "story_roster": "data/story_roster.json",
   "story_season_1": "data/story/season_1.json",
+  "story_outfits": "data/story_outfits.json",
   "engine_config": "data/engine.json"
 }
