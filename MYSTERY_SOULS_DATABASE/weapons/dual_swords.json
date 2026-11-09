@@ -1,0 +1,10 @@
+{
+  "id": "dual_swords",
+  "type": "weapon",
+  "name": "Espadas Duales",
+  "rarity": "SS",
+  "combat_style": "master",
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "notes": ["Movimientos y estadísticas detalladas pendientes de diseño."]
+}

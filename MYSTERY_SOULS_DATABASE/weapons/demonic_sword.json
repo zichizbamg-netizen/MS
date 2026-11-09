@@ -1,0 +1,10 @@
+{
+  "id": "demonic_sword",
+  "type": "weapon",
+  "name": "Espada Demoníaca",
+  "rarity": "S",
+  "combat_style": "power",
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "notes": ["Movimientos y estadísticas detalladas pendientes de diseño."]
+}

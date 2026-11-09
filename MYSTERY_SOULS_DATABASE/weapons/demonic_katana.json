@@ -1,0 +1,10 @@
+{
+  "id": "demonic_katana",
+  "type": "weapon",
+  "name": "Katana Demoníaca",
+  "rarity": "A",
+  "combat_style": "speed",
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "notes": ["Movimientos y estadísticas detalladas pendientes de diseño."]
+}

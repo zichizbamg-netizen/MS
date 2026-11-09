@@ -1,37 +1,77 @@
 {
   "id": "yulis",
-  "name": "Yulis",
-  "rank": "S",
-  "status": "playable",
-  "role": "fighter",
-  "story": null,
-  "base_stats": {
-    "health": 100,
-    "attack": 95,
-    "defense": 90,
-    "speed": 105,
-    "ki": 110
+  "display": {
+    "name": "Yulis",
+    "title": "Guerrera Tecnológica",
+    "rank": "S",
+    "rarity": "S",
+    "element": "technology",
+    "portrait": {
+      "image": "yulis_portrait.png",
+      "preview": "yulis_idle.png"
+    },
+    "intro_voice": "yulis_select.wav"
+  },
+  "profile": {
+    "role": "Hybrid Fighter",
+    "description": "Especialista en tecnología militar. Su estilo de combate cambia según el arma equipada.",
+    "combat_identity": "Alterna entre combate a distancia y cuerpo a cuerpo mediante sus armas.",
+    "difficulty": "Medium"
+  },
+  "stats": {
+    "power": 85,
+    "speed": 95,
+    "range": 100,
+    "defense": 85,
+    "ki": 100
+  },
+  "combat": {
+    "default_weapon": "laser_gun",
+    "weapon_mastery": true,
+    "available_weapons": [
+      { "id": "laser_gun", "unlocked": true },
+      { "id": "laser_cannon", "unlocked": false, "requires_transformation": "armor_1" },
+      { "id": "golden_sword", "unlocked": false, "requires_transformation": "golden_mode" }
+    ]
   },
   "ultimate": {
     "id": "laser_cannon_core",
-    "name": "Energía del Cañón Láser",
-    "owner": "character"
+    "name": "Disparo Máximo del Cañón Láser",
+    "type": "ultimate",
+    "power_rank": "SS",
+    "owner": "character",
+    "description": "Concentra toda la energía del núcleo del Cañón Láser y libera un disparo devastador."
   },
-  "passives": [],
-  "outfits": [
-    { "id": "tech_blue", "name": "Traje Tecnológico Azul", "type": "outfit" },
-    { "id": "tech_pink", "name": "Traje Tecnológico Rosa", "type": "outfit", "unlock": "armor_2" },
-    { "id": "armor_1", "name": "Armadura 1", "type": "armor", "color": "naranja" },
-    { "id": "armor_2", "name": "Armadura 2", "type": "armor", "color": "rosa" }
+  "transformations": [
+    {
+      "id": "armor_1",
+      "name": "Armadura 1",
+      "unlocked": false,
+      "effects": { "weapon": "laser_cannon", "attack_multiplier": 1.5, "speed_multiplier": 0.5 }
+    },
+    {
+      "id": "armor_2",
+      "name": "Armadura 2",
+      "unlocked": false,
+      "effects": { "weapon": "laser_cannon", "attack_multiplier": 2.0, "speed_multiplier": 1.2 }
+    },
+    {
+      "id": "golden_mode",
+      "name": "Modo Espada Dorada",
+      "unlocked": false,
+      "effects": { "weapon": "golden_sword", "ultimate_preserved": true }
+    }
   ],
-  "transformations": ["armor_1", "armor_2", "golden_mode"],
-  "equipment": {
-    "default_weapon": "laser_gun",
-    "available_weapons": ["laser_gun", "laser_cannon", "golden_sword"]
-  },
-  "notes": [
-    "La Espada Dorada es un arma y su estilo de combate pertenece al arma.",
-    "golden_sword solo se puede equipar durante golden_mode.",
-    "Energía del Cañón Láser pertenece a Yulis y se conserva al cambiar de arma o transformación."
-  ]
+  "outfits": [
+    { "id": "tech_blue", "name": "Traje Tecnológico Azul", "unlocked": true },
+    { "id": "tech_pink", "name": "Traje Tecnológico Rosa", "unlocked": false },
+    { "id": "armor_1", "name": "Armadura 1", "unlocked": false },
+    { "id": "armor_2", "name": "Armadura 2", "unlocked": false }
+  ],
+  "selection_screen": {
+    "background": "yulis_theme.png",
+    "animation": "gun_idle",
+    "effects": ["energy_particles", "blue_aura"],
+    "quote": "La tecnología también puede cambiar el destino."
+  }
 }

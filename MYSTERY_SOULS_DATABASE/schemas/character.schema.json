@@ -1,54 +1,53 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://mysterysouls.example/schemas/character.schema.json",
-  "title": "Mystery Souls Character",
+  "title": "Mystery Souls Character Profile",
   "type": "object",
-  "required": ["id", "name", "rank", "status", "role", "base_stats", "ultimate", "transformations", "equipment"],
+  "required": ["id", "display", "profile", "stats", "combat", "ultimate", "transformations", "outfits", "selection_screen"],
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
-    "name": { "type": "string" },
-    "rank": { "type": "string" },
-    "status": { "type": "string" },
-    "role": { "type": "string" },
-    "story": { "type": ["string", "null"] },
-    "base_stats": { "$ref": "#/$defs/stats" },
-    "ultimate": {
+    "display": {
       "type": "object",
-      "required": ["id", "name", "owner"],
+      "required": ["name", "title", "rank", "rarity", "element", "portrait", "intro_voice"],
       "properties": {
-        "id": { "type": "string" },
-        "name": { "type": "string" },
-        "owner": { "const": "character" }
+        "name": { "type": "string" }, "title": { "type": "string" },
+        "rank": { "type": "string" }, "rarity": { "type": "string" },
+        "element": { "type": "string" },
+        "portrait": { "type": "object", "required": ["image", "preview"], "properties": { "image": { "type": "string" }, "preview": { "type": "string" } }, "additionalProperties": false,
+        "intro_voice": { "type": "string" }
       },
       "additionalProperties": false
     },
-    "passives": { "type": "array" },
-    "outfits": { "type": "array", "items": { "type": "object" } },
-    "transformations": { "type": "array", "items": { "type": "string" } },
-    "equipment": {
+    "profile": {
       "type": "object",
-      "required": ["default_weapon", "available_weapons"],
-      "properties": {
-        "default_weapon": { "type": "string" },
-        "available_weapons": { "type": "array", "items": { "type": "string" } }
-      },
+      "required": ["role", "description", "combat_identity", "difficulty"],
+      "properties": { "role": { "type": "string" }, "description": { "type": "string" }, "combat_identity": { "type": "string" }, "difficulty": { "type": "string" } },
       "additionalProperties": false
     },
-    "notes": { "type": "array", "items": { "type": "string" } }
-  },
-  "additionalProperties": false,
-  "$defs": {
     "stats": {
       "type": "object",
-      "required": ["health", "attack", "defense", "speed", "ki"],
+      "required": ["power", "speed", "range", "defense", "ki"],
+      "properties": { "power": { "type": "number", "minimum": 0 }, "speed": { "type": "number", "minimum": 0 }, "range": { "type": "number", "minimum": 0 }, "defense": { "type": "number", "minimum": 0 }, "ki": { "type": "number", "minimum": 0 } },
+      "additionalProperties": false
+    },
+    "combat": {
+      "type": "object",
+      "required": ["default_weapon", "weapon_mastery", "available_weapons"],
       "properties": {
-        "health": { "type": "number", "minimum": 0 },
-        "attack": { "type": "number", "minimum": 0 },
-        "defense": { "type": "number", "minimum": 0 },
-        "speed": { "type": "number", "minimum": 0 },
-        "ki": { "type": "number", "minimum": 0 }
+        "default_weapon": { "type": "string" }, "weapon_mastery": { "type": "boolean" },
+        "available_weapons": { "type": "array", "items": { "type": "object", "required": ["id", "unlocked"], "properties": { "id": { "type": "string" }, "unlocked": { "type": "boolean" }, "requires_transformation": { "type": "string" } }, "additionalProperties": false } }
       },
       "additionalProperties": false
-    }
-  }
+    },
+    "ultimate": {
+      "type": "object",
+      "required": ["id", "name", "type", "power_rank", "owner", "description"],
+      "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "type": { "const": "ultimate" }, "power_rank": { "type": "string" }, "owner": { "const": "character" }, "description": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "transformations": { "type": "array", "items": { "type": "object", "required": ["id", "name", "unlocked"], "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "type": { "type": "string" }, "unlocked": { "type": "boolean" }, "effects": { "type": "object" } }, "additionalProperties": false } },
+    "outfits": { "type": "array", "items": { "type": "object", "required": ["id", "name", "unlocked"], "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "type": { "type": "string" }, "unlocked": { "type": "boolean" } }, "additionalProperties": false } },
+    "selection_screen": { "type": "object", "required": ["background", "animation", "effects", "quote"], "properties": { "background": { "type": "string" }, "animation": { "type": "string" }, "effects": { "type": "array", "items": { "type": "string" } }, "quote": { "type": "string" } }, "additionalProperties": false }
+  },
+  "additionalProperties": false
 }

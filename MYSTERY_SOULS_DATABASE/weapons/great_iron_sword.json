@@ -1,0 +1,10 @@
+{
+  "id": "great_iron_sword",
+  "type": "weapon",
+  "name": "Espada Grande de Hierro",
+  "rarity": "B",
+  "combat_style": "heavy",
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "notes": ["Movimientos y estadísticas detalladas pendientes de diseño."]
+}

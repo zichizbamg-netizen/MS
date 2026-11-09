@@ -1,9 +1,9 @@
 {
   "id": "golden_sword",
   "type": "weapon",
-  "name": "Golden Sword",
+  "name": "Espada Dorada",
+  "rarity": "SS",
   "combat_style": "melee",
-  "changes_style": true,
   "availability": {
     "users": ["zichiz", "yulis"],
     "required_transformation": "golden_mode"
@@ -14,5 +14,9 @@
     "special": []
   },
   "stats": { "damage": 130, "range": 50, "speed": 100 },
-  "notes": ["This weapon owns its melee combat style and moveset; it does not replace the wielder's Ultimate."]
+  "notes": [
+    "El estilo de combate y los movimientos pertenecen a esta arma.",
+    "Solo Zichiz y Yulis pueden equiparla durante golden_mode.",
+    "No reemplaza ni modifica el Ultimate del personaje."
+  ]
 }

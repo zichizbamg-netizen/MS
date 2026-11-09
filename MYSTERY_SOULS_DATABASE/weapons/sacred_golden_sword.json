@@ -1,0 +1,10 @@
+{
+  "id": "sacred_golden_sword",
+  "type": "weapon",
+  "name": "Espada Sagrada Dorada",
+  "rarity": "SS",
+  "combat_style": "holy",
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "notes": ["Arma distinta de golden_sword; sus movimientos y estadísticas detalladas están pendientes de diseño."]
+}

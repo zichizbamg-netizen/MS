@@ -1,0 +1,7 @@
+{
+  "id": "weapon_switch",
+  "allowed_states": ["neutral", "moving"],
+  "blocked_states": ["attacking", "hitstun", "guard_break", "ultimate"],
+  "switch_lock_seconds": 0.35,
+  "invalid_equip_behavior": "reject_and_keep_current_weapon"
+}
