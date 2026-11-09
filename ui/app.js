@@ -1,6 +1,6 @@
-import { loadJson } from './data-loader.js';
-import { FightingEngine } from './engine.js';
-import { renderBattle, renderHud } from '../ui/renderer.js';
+import { loadJson } from '../engine/data-loader.js';
+import { FightingEngine } from '../engine/engine.js';
+import { renderBattle, renderHud } from './renderer.js';
 import { SaveManager } from '../save/save-manager.js';
 
 const selectScreen = document.querySelector('#select-screen');
@@ -8,13 +8,15 @@ const battleScreen = document.querySelector('#battle-screen');
 const restScreen = document.querySelector('#rest-screen');
 const status = document.querySelector('#status');
 const saves = new SaveManager();
-let engine; let season; let roster; let missionIndex = 0; let selectedFighter = 'zichiz'; let selectedWeapon = ''; let lastWon = false; let storyMode = true;
+let engine; let season; let roster; let catalog; let missionIndex = 0;
+let selectedFighter = 'zichiz'; let selectedWeapon = ''; let lastWon = false;
 
 const currentMission = () => season.missions[missionIndex];
 const availableWeapons = (fighterId) => roster[fighterId].fighter.available_weapons.filter((id) => catalog.weapons[id]);
-let catalog;
 
-function showMain() { engine?.stop(); restScreen.hidden = true; battleScreen.hidden = true; selectScreen.hidden = false; renderSelection(); }
+function showMain() {
+  engine?.stop(); restScreen.hidden = true; battleScreen.hidden = true; selectScreen.hidden = false; renderSelection();
+}
 
 function renderSelection() {
   const mission = currentMission();
@@ -32,8 +34,13 @@ function renderSelection() {
     </section><section class="selection-preview"><div class="hero-placeholder">${roster[selectedFighter].fighter.name}</div><h2>Rival: ${mission.opponent_name}</h2><p>El arma se fija al comenzar y no se puede cambiar durante el combate.</p><button id="start-battle" class="primary">Comenzar misión</button></section></div>`;
   selectScreen.querySelectorAll('[data-fighter]').forEach((button) => button.addEventListener('click', () => { selectedFighter = button.dataset.fighter; selectedWeapon = ''; renderSelection(); }));
   selectScreen.querySelector('#weapon-choice').addEventListener('change', (event) => { selectedWeapon = event.target.value; });
-  selectScreen.querySelector('#start-battle').addEventListener('click', () => startMission());
-  selectScreen.querySelector('#continue-save')?.addEventListener('click', () => { const progress = saves.load(); missionIndex = Math.min(progress.missionIndex, season.missions.length - 1); selectedFighter = season.missions[missionIndex].playable.includes(progress.selectedFighter) ? progress.selectedFighter : season.missions[missionIndex].playable[0]; selectedWeapon = progress.selectedWeapon ?? ''; renderSelection(); });
+  selectScreen.querySelector('#start-battle').addEventListener('click', startMission);
+  selectScreen.querySelector('#continue-save')?.addEventListener('click', () => {
+    const progress = saves.load();
+    missionIndex = Math.max(0, Math.min(progress.missionIndex, season.missions.length - 1));
+    selectedFighter = season.missions[missionIndex].playable.includes(progress.selectedFighter) ? progress.selectedFighter : season.missions[missionIndex].playable[0];
+    selectedWeapon = progress.selectedWeapon ?? ''; renderSelection();
+  });
 }
 
 async function startMission() {
@@ -42,8 +49,9 @@ async function startMission() {
   try {
     status.textContent = 'Cargando misión…'; selectScreen.hidden = true; battleScreen.hidden = false; restScreen.hidden = true;
     engine = new FightingEngine(document.querySelector('#battle-canvas'), (canvas, fighters, camera, config) => {
-      renderBattle(canvas, fighters, camera, config); renderHud(document.querySelector('#p1-hud'), fighters[0]); renderHud(document.querySelector('#p2-hud'), fighters[1]);
-    }, (result) => showRest(result));
+      renderBattle(canvas, fighters, camera, config);
+      renderHud(document.querySelector('#p1-hud'), fighters[0]); renderHud(document.querySelector('#p2-hud'), fighters[1]);
+    }, showRest);
     await engine.initialize([selectedFighter, mission.opponent], [selectedWeapon, roster[mission.opponent].fighter.default_weapon]);
     document.querySelector('#round-label').textContent = `MISIÓN ${missionIndex + 1}`;
     status.textContent = ''; engine.start();
@@ -72,9 +80,8 @@ function showRest(result) {
 }
 
 async function boot() {
-  catalog = await loadJson('../data/catalog.json');
-  season = await loadJson(catalog.story_season_1);
-  roster = await loadJson(catalog.story_roster);
+  catalog = await loadJson('data/catalog.json');
+  [season, roster] = await Promise.all([loadJson(catalog.story_season_1), loadJson(catalog.story_roster)]);
   const saved = saves.load();
   if (saved && Number.isInteger(saved.missionIndex)) missionIndex = Math.max(0, Math.min(saved.missionIndex, season.missions.length - 1));
   if (saved?.selectedFighter) selectedFighter = saved.selectedFighter;

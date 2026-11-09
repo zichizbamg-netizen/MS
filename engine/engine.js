@@ -5,22 +5,35 @@ import { Fighter } from '../combat/fighter.js';
 import { Camera2D } from '../camera/camera.js';
 
 export class FightingEngine {
-  constructor(canvas, render, onResult = () => {}) { this.canvas = canvas; this.render = render; this.onResult = onResult; this.running = false; this.accumulator = 0; this.lastTime = 0; this.resultSent = false; }
+  constructor(canvas, render, onResult = () => {}) {
+    this.canvas = canvas; this.render = render; this.onResult = onResult;
+    this.running = false; this.accumulator = 0; this.lastTime = 0; this.resultSent = false;
+  }
 
   async initialize(characterIds, weaponIds = []) {
-    this.catalog = await loadJson('../data/catalog.json');
+    this.catalog = await loadJson('data/catalog.json');
     this.config = await loadJson(this.catalog.engine_config);
-    const roster = await loadJson(this.catalog.story_roster);
     const fighters = await Promise.all(characterIds.map(async (id, index) => {
-      const record = roster[id];
-      if (!record) throw new Error(`Unknown fighter: ${id}`);
-      const weaponId = weaponIds[index] || record.fighter.default_weapon;
-      if (!record.fighter.available_weapons.includes(weaponId)) throw new Error(`${weaponId} is not available to ${record.fighter.name}.`);
+      let record;
+      try { record = await loadJson(`data/story_roster.json`); record = record[id]; }
+      catch { record = null; }
+      if (!record) {
+        const entry = this.catalog.fighters.find((item) => item.id === id);
+        if (!entry) throw new Error(`Unknown fighter: ${id}`);
+        const directory = entry.data.replace(/\/fighter\.json$/, '');
+        record = await loadCharacterBundle(directory);
+      }
+      const fighterData = record.fighter;
+      const weaponId = weaponIds[index] || fighterData.default_weapon;
+      if (fighterData.available_weapons && !fighterData.available_weapons.includes(weaponId)) {
+        throw new Error(`${weaponId} is not available to ${fighterData.name}.`);
+      }
       const weaponPath = this.catalog.weapons[weaponId];
       if (!weaponPath) throw new Error(`Missing weapon data: ${weaponId}`);
       const weapon = await loadWeaponBundle(weaponPath);
-      if (weapon.weapon.availability?.required_transformation && record.fighter.form !== weapon.weapon.availability.required_transformation) {
-        throw new Error(`${weapon.weapon.name} requires ${weapon.weapon.availability.required_transformation}.`);
+      const requiredForm = weapon.weapon.availability?.required_transformation;
+      if (requiredForm && fighterData.form !== requiredForm && !(requiredForm === 'golden_mode' && fighterData.form === 'gold_armor')) {
+        throw new Error(`${weapon.weapon.name} requires ${requiredForm}.`);
       }
       return { bundle: record, weapon };
     }));
@@ -46,8 +59,8 @@ export class FightingEngine {
       this.world.step({ p1: this.input.read('p1'), p2: this.input.read('p2') }, step);
       this.accumulator -= step;
     }
-    const winner = this.fighters.find((fighter) => fighter.health <= 0);
-    if (winner && !this.resultSent) {
+    const defeated = this.fighters.find((fighter) => fighter.health <= 0);
+    if (defeated && !this.resultSent) {
       this.resultSent = true; this.stop();
       this.onResult({ winner: this.fighters.find((fighter) => fighter.health > 0)?.player ?? null, fighters: this.fighters });
     }
