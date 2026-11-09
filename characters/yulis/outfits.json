@@ -1,0 +1,8 @@
+{
+  "outfits": [
+    { "id": "tech_blue", "name": "Traje Tecnológico Azul", "unlocked_by_default": true },
+    { "id": "tech_pink", "name": "Traje Tecnológico Rosa", "unlock": "future" },
+    { "id": "armor_1", "name": "Armadura 1", "unlock": "future" },
+    { "id": "armor_2", "name": "Armadura 2", "unlock": "future" }
+  ]
+}

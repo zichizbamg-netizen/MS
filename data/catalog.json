@@ -1,18 +1,34 @@
 {
   "fighters": [
-    { "id": "zichiz", "name": "Zichiz", "data": "fighters/zichiz/fighter.json" },
-    { "id": "yulis", "name": "Yulis", "data": "fighters/yulis/fighter.json" }
+    { "id": "zichiz", "name": "Zichiz", "data": "characters/zichiz" },
+    { "id": "yulis", "name": "Yulis", "data": "characters/yulis" }
   ],
   "weapons": {
     "iron_sword": "weapons/iron_sword/weapon.json",
+    "great_iron_sword": "weapons/great_iron_sword/weapon.json",
+    "demonic_katana": "weapons/demonic_katana/weapon.json",
+    "demonic_sword": "weapons/demonic_sword/weapon.json",
+    "sacred_golden_sword": "weapons/sacred_golden_sword/weapon.json",
+    "dual_swords": "weapons/dual_swords/weapon.json",
     "laser_gun": "weapons/laser_gun/weapon.json",
+    "laser_cannon": "weapons/laser_cannon/weapon.json",
     "golden_sword": "weapons/golden_sword/weapon.json"
   },
-  "weapon_names": { "iron_sword": "Espada de Hierro", "laser_gun": "Pistola Láser", "golden_sword": "Espada Dorada" },
+  "weapon_names": {
+    "iron_sword": "Espada de Hierro",
+    "great_iron_sword": "Gran Espada de Hierro",
+    "demonic_katana": "Katana Demoníaca",
+    "demonic_sword": "Espada Demoníaca",
+    "sacred_golden_sword": "Espada Sagrada Dorada",
+    "dual_swords": "Espadas Gemelas",
+    "laser_gun": "Pistola Láser",
+    "laser_cannon": "Cañón Láser",
+    "golden_sword": "Espada Dorada"
+  },
   "story_roster": "data/story_roster.json",
-  "story_season_1": "data/story/season_1.json",
+  "story_season_1": "story/season_1.json",
   "story_outfits": "data/story_outfits.json",
   "interface_config": "data/interface.json",
   "ai_config": "data/ai.json",
-  "engine_config": "data/engine.json"
+  "engine_config": "stages/stage_1.json"
 }

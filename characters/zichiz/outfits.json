@@ -1,0 +1,8 @@
+{
+  "outfits": [
+    { "id": "normal", "name": "Normal", "unlocked_by_default": true },
+    { "id": "training", "name": "Entrenamiento", "unlocked_by_default": true },
+    { "id": "armor", "name": "Armadura", "unlock": "future" },
+    { "id": "evil", "name": "Zichiz Maligno", "unlock": "mission_dual_soul", "color": "#b44b68" }
+  ]
+}

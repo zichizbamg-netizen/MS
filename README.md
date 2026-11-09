@@ -1,23 +1,31 @@
 # Mystery Souls — Data-Driven 2D Fighting Engine
 
-A browser-native, modular fighting-engine foundation using HTML Canvas, ES modules, JSON data, Web Audio, Gamepad API, and LocalStorage. No framework or game engine dependencies.
+## Estructura canónica del proyecto
 
-## Run
+```text
+MS/
+├── index.html
+├── ui/                 # Menú, selección, HUD, descanso y renderizado
+├── engine/             # Carga de datos, input, simulación y coordinación
+├── assets/             # Sprites, retratos, audio y fondos
+├── data/               # Catálogos y configuración de interfaz/IA
+├── characters/         # Datos de personajes separados por responsabilidad
+├── weapons/            # Arma, moveset, frame data, animaciones, efectos y audio
+├── stages/             # Escenarios y configuración de combate
+├── story/              # Campañas y misiones
+├── save/               # Guardado local
+├── combat/             # Sistemas de combate
+└── camera/             # Cámara 2D
+```
 
-Serve the repository root over HTTP (ES modules and `fetch()` do not work reliably from `file://`), then open `index.html`. For example: `python -m http.server 8000` and visit `http://localhost:8000`.
+Personajes principales: `characters/<id>/character.json`, `stats.json`, `ultimate.json`, `transformations.json` y `outfits.json`. El motor los carga desde el catálogo; los datos de armas siguen separados de los personajes. Los personajes de historia que todavía no tienen directorio usan temporalmente `data/story_roster.json` hasta migrarse con el mismo formato.
 
-## Layout
+## Ejecutar
 
-- `engine/` runtime orchestration and JSON loading.
-- `combat/` fighter composition, typed collision volumes, and deterministic fixed-step combat simulation.
-- `physics/`, `camera/`, `ui/`, `audio/`, `save/` focused runtime systems.
-- `fighters/` character-owned data, split into the requested files.
-- `weapons/` weapon-owned movesets, frame data, animation/effect/sound metadata.
-- `data/` catalog and engine tuning JSON.
-- `assets/` runtime asset location; image references are data-driven and may be added when assets are available.
+Desde la raíz del repositorio, ejecuta `python -m http.server 8000` y abre `http://localhost:8000`. No abras `index.html` con `file://`: el navegador debe servir los módulos y JSON por HTTP.
 
-The runtime is a reusable starting engine, not a finished production game. Rollback networking, full animation playback, projectile/assist gameplay, AI behaviors, and comprehensive combat mechanics still require implementation and tests. The simulation exposes frame-based inputs and fixed updates to support those additions.
+Los cambios de arma solo se realizan en la selección/descanso entre combates. La campaña está definida en `story/season_1.json`; escenario y controles de combate, en `stages/`.
 
-## Ownership invariant
+## Estado
 
-Fighters own identity, stats, forms, passives, outfits, and Ultimate. Weapons own style, moves, frame data, hitboxes, animation/effect/sound references. The engine composes these records at runtime and never transfers weapon style or Ultimate ownership.
+Esta estructura organiza los datos y las rutas. No implica que todos los personajes, sprites, movimientos, escenarios, IA avanzada o funciones online estén ya completos o probados. Los archivos de imagen referenciados son recursos previstos; agrega los assets reales para sustituir los placeholders de Canvas.

@@ -1,0 +1,19 @@
+{
+  "fixed_hz": 60,
+  "max_frame_delta_seconds": 0.1,
+  "stage": { "width": 1600, "floor_y": 520, "background_color": "#161b2a" },
+  "physics": { "gravity": 1800, "walk_speed": 260, "jump_speed": 680, "pushbox": { "width": 64, "height": 150 } },
+  "combat": {
+    "buffer_frames": 8,
+    "hitstop_frames": 5,
+    "combo_reset_frames": 120,
+    "damage_scale": 1,
+    "guard_damage_scale": 0.08,
+    "hurtbox": { "x": -24, "y": -138, "width": 48, "height": 138 }
+  },
+  "camera": { "base_zoom": 1, "min_zoom": 0.75, "max_zoom": 1.1, "padding": 300, "shake_decay": 18 },
+  "controls": {
+    "p1": { "left": "KeyA", "right": "KeyD", "jump": "KeyW", "light": "KeyF", "heavy": "KeyG", "ultimate": "KeyH", "block": "KeyS" },
+    "p2": { "left": "ArrowLeft", "right": "ArrowRight", "jump": "ArrowUp", "light": "KeyK", "heavy": "KeyL", "ultimate": "Semicolon", "block": "ArrowDown" }
+  }
+}

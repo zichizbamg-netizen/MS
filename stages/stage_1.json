@@ -1,0 +1,10 @@
+{
+  "id": "stage_1",
+  "name": "Umbral del Nuevo Mundo",
+  "width": 1600,
+  "floor_y": 520,
+  "background_color": "#161b2a",
+  "background_asset": "assets/stages/stage_1/background.png",
+  "music": null,
+  "camera": { "base_zoom": 1, "min_zoom": 0.75, "max_zoom": 1.1, "padding": 300, "shake_decay": 18 }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "zichiz",
+  "name": "Zichiz",
+  "title": "Portador del Eco Primordial",
+  "default_weapon": "iron_sword",
+  "available_weapons": ["iron_sword", "great_iron_sword", "demonic_katana", "demonic_sword", "sacred_golden_sword", "dual_swords", "golden_sword"],
+  "portrait": "assets/characters/zichiz/portrait.png",
+  "battle_sprite": "assets/characters/zichiz/battle.png"
+}

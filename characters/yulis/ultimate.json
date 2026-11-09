@@ -1,0 +1,7 @@
+{
+  "id": "laser_cannon_core",
+  "name": "Disparo Máximo del Cañón Láser",
+  "owner": "character",
+  "power_rank": "SS",
+  "description": "Concentra la energía del cañón láser y libera un disparo devastador."
+}

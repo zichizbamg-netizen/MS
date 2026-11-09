@@ -1,0 +1,7 @@
+{
+  "transformations": [
+    { "id": "armor_1", "name": "Armadura 1", "weapon_access": ["laser_cannon"], "attack_multiplier": 1.5, "speed_multiplier": 0.5 },
+    { "id": "armor_2", "name": "Armadura 2", "weapon_access": ["laser_cannon"], "attack_multiplier": 2.0, "speed_multiplier": 1.2 },
+    { "id": "golden_mode", "name": "Golden Mode", "weapon_access": ["golden_sword"], "ultimate_policy": "preserve_character_ultimate" }
+  ]
+}

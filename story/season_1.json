@@ -1,0 +1,15 @@
+{
+  "season": 1,
+  "title": "Temporada 1: El caos y el sello final",
+  "missions": [
+    { "id": "new_world", "title": "Zichiz y Yulis entran en un nuevo mundo caótico", "opponent": "aligart", "opponent_name": "Aligart", "playable": ["zichiz", "yulis"], "forms": ["base"], "objective": "Derrota a Aligart con Zichiz o Yulis en forma base." },
+    { "id": "primordial_echo", "title": "Zichiz, portador del Eco Primordial", "opponent": "ardaroth", "opponent_name": "Ardaroth", "playable": ["zichiz", "rihoga"], "forms": ["base"], "objective": "Derrota a Ardaroth con Zichiz o Rihoga en forma base." },
+    { "id": "silent_wrath", "title": "Batalla contra Ebotw – El Umbral de la Ira Silente", "opponent": "ebotw", "opponent_name": "Ebotw", "playable": ["zihoga"], "forms": ["fusion"], "objective": "Derrota a Ebotw con Zihoga, la fusión de Zichiz Maligno y Rihoga." },
+    { "id": "tower_rescue", "title": "Rescate de la princesa – Luz Cautiva en la Torre del Olvido", "opponent": "soulkeeper", "opponent_name": "Soulkeeper", "playable": ["richiz"], "forms": ["fusion"], "objective": "Derrota a Soulkeeper con Richiz, la fusión de Zichiz y Rihoga." },
+    { "id": "dual_soul", "title": "Separación de la oscuridad de Zichiz – Alma dual", "opponent": "zichiz", "opponent_name": "Zichiz Maligno", "opponent_outfit": "evil", "playable": ["rihoga"], "forms": ["base"], "objective": "Derrota a Zichiz Maligno —Zichiz base con outfit maligno— con Rihoga." , "unlock_on_victory": ["zichiz:evil"] },
+    { "id": "redemption", "title": "Derrota del rey Shinky y entrenamiento con Samael – La redención de un rey", "opponent": "samael_maligno", "opponent_name": "Samael Maligno", "playable": ["zichiz", "yulis", "rihoga"], "forms": ["base"], "objective": "Vence a Samael Maligno." },
+    { "id": "sorcerer_crystal", "title": "Zichiz oscuro obtiene el cristal del hechicero Roben – El Cristal del Hechicero", "opponent": "roben", "opponent_name": "Roben", "playable": ["zichiz"], "required_player_outfit": "evil", "forms": ["dark"], "objective": "Derrota a Roben con Zichiz usando el outfit maligno desbloqueado." },
+    { "id": "guardian_blood", "title": "Energía oscura robada, Leon casi muere – La sangre del guardián", "opponent": "zichiz_semicorrupto", "opponent_name": "Zichiz Semicorrupto", "playable": ["zichiz"], "forms": ["base"], "objective": "Derrota a Zichiz Semicorrupto con Zichiz base." },
+    { "id": "destiny_edge", "title": "La espada sagrada, nuevos aliados y el sello final – El filo del destino", "opponent": "zichiz_corrupto", "opponent_name": "Zichiz Corrupto", "playable": ["zichiz_gold", "yulis_gold"], "forms": ["gold_armor"], "objective": "Derrota a Zichiz Corrupto con Zichiz Gold Armor o Yulis Gold Armor." }
+  ]
+}
