@@ -1,0 +1,1 @@
+{ "forms": [{ "id": "evil_zichiz", "name": "Zichiz Maligno", "unlocked": false }, { "id": "golden_mode", "name": "Golden Mode", "unlocked": false, "weapon_access": ["golden_sword"], "ultimate_preserved": true }] }

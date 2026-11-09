@@ -1,0 +1,12 @@
+{
+  "fighters": [
+    { "id": "zichiz", "name": "Zichiz", "data": "../fighters/zichiz/fighter.json" },
+    { "id": "yulis", "name": "Yulis", "data": "../fighters/yulis/fighter.json" }
+  ],
+  "weapons": {
+    "iron_sword": "../weapons/iron_sword/weapon.json",
+    "laser_gun": "../weapons/laser_gun/weapon.json",
+    "golden_sword": "../weapons/golden_sword/weapon.json"
+  },
+  "engine_config": "./engine.json"
+}

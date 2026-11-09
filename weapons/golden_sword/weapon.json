@@ -1,0 +1,1 @@
+{ "id": "golden_sword", "name": "Espada Dorada", "type": "weapon", "combat_style": "melee", "availability": { "users": ["zichiz", "yulis"], "required_transformation": "golden_mode" }, "stats": { "damage": 15 } }

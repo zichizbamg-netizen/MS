@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131e">
+  <title>Mystery Souls — Fighting Engine</title>
+  <link rel="stylesheet" href="./ui/styles.css">
+</head>
+<body>
+  <main id="app" aria-live="polite">
+    <header class="topbar"><a class="brand" href="#">MYSTERY <b>SOULS</b></a><span>2D FIGHTING ENGINE</span></header>
+    <section id="select-screen" class="select-screen"></section>
+    <section id="battle-screen" class="battle-screen" hidden>
+      <div class="battle-hud"><div id="p1-hud"></div><div id="round-label">ROUND 1</div><div id="p2-hud"></div></div>
+      <canvas id="battle-canvas" aria-label="Campo de combate"></canvas>
+      <footer class="battle-controls"><span>J1: A/D mover · W saltar · F atacar · G Ultimate</span><span>J2: ←/→ mover · ↑ saltar · K atacar · L Ultimate</span><button id="return-select">Volver</button></footer>
+    </section>
+    <p id="status" class="status" role="status"></p>
+  </main>
+  <script type="module" src="./ui/app.js"></script>
+</body>
+</html>

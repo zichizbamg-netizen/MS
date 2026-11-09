@@ -1,0 +1,1 @@
+{ "id": "laser_gun", "name": "Pistola Láser", "type": "weapon", "combat_style": "ranged", "stats": { "damage": 9 } }
