@@ -2,52 +2,172 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://mysterysouls.example/schemas/character.schema.json",
   "title": "Mystery Souls Character Profile",
+  "description": "Schema for character profiles. Combat style and movesets remain defined by weapon records; the Ultimate belongs to the character.",
   "type": "object",
-  "required": ["id", "display", "profile", "stats", "combat", "ultimate", "transformations", "outfits", "selection_screen"],
+  "required": [
+    "id",
+    "display",
+    "profile",
+    "stats",
+    "combat",
+    "ultimate",
+    "transformations",
+    "outfits",
+    "selection_screen"
+  ],
   "properties": {
-    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
     "display": {
       "type": "object",
-      "required": ["name", "title", "rank", "rarity", "element", "portrait", "intro_voice"],
+      "required": ["name", "title", "rank", "rarity", "element", "portrait"],
       "properties": {
-        "name": { "type": "string" }, "title": { "type": "string" },
-        "rank": { "type": "string" }, "rarity": { "type": "string" },
+        "name": { "type": "string", "minLength": 1 },
+        "title": { "type": "string" },
+        "rank": { "type": "string" },
+        "rarity": { "type": "string" },
         "element": { "type": "string" },
-        "portrait": { "type": "object", "required": ["image", "preview"], "properties": { "image": { "type": "string" }, "preview": { "type": "string" } }, "additionalProperties": false,
-        "intro_voice": { "type": "string" }
+        "portrait": { "$ref": "#/$defs/portrait" }
       },
       "additionalProperties": false
     },
     "profile": {
       "type": "object",
       "required": ["role", "description", "combat_identity", "difficulty"],
-      "properties": { "role": { "type": "string" }, "description": { "type": "string" }, "combat_identity": { "type": "string" }, "difficulty": { "type": "string" } },
+      "properties": {
+        "role": { "type": "string" },
+        "description": { "type": "string" },
+        "combat_identity": { "type": "string" },
+        "difficulty": { "type": "string" }
+      },
       "additionalProperties": false
     },
-    "stats": {
-      "type": "object",
-      "required": ["power", "speed", "range", "defense", "ki"],
-      "properties": { "power": { "type": "number", "minimum": 0 }, "speed": { "type": "number", "minimum": 0 }, "range": { "type": "number", "minimum": 0 }, "defense": { "type": "number", "minimum": 0 }, "ki": { "type": "number", "minimum": 0 } },
-      "additionalProperties": false
-    },
+    "stats": { "$ref": "#/$defs/characterStats" },
     "combat": {
       "type": "object",
       "required": ["default_weapon", "weapon_mastery", "available_weapons"],
       "properties": {
-        "default_weapon": { "type": "string" }, "weapon_mastery": { "type": "boolean" },
-        "available_weapons": { "type": "array", "items": { "type": "object", "required": ["id", "unlocked"], "properties": { "id": { "type": "string" }, "unlocked": { "type": "boolean" }, "requires_transformation": { "type": "string" } }, "additionalProperties": false } }
+        "default_weapon": { "type": "string", "minLength": 1 },
+        "weapon_mastery": { "type": "boolean" },
+        "available_weapons": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/characterWeapon" },
+          "uniqueItems": true
+        }
       },
       "additionalProperties": false
     },
     "ultimate": {
       "type": "object",
       "required": ["id", "name", "type", "power_rank", "owner", "description"],
-      "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "type": { "const": "ultimate" }, "power_rank": { "type": "string" }, "owner": { "const": "character" }, "description": { "type": "string" } },
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "name": { "type": "string" },
+        "type": { "const": "ultimate" },
+        "power_rank": { "type": "string" },
+        "owner": { "const": "character" },
+        "description": { "type": "string" }
+      },
       "additionalProperties": false
     },
-    "transformations": { "type": "array", "items": { "type": "object", "required": ["id", "name", "unlocked"], "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "type": { "type": "string" }, "unlocked": { "type": "boolean" }, "effects": { "type": "object" } }, "additionalProperties": false } },
-    "outfits": { "type": "array", "items": { "type": "object", "required": ["id", "name", "unlocked"], "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "type": { "type": "string" }, "unlocked": { "type": "boolean" } }, "additionalProperties": false } },
-    "selection_screen": { "type": "object", "required": ["background", "animation", "effects", "quote"], "properties": { "background": { "type": "string" }, "animation": { "type": "string" }, "effects": { "type": "array", "items": { "type": "string" } }, "quote": { "type": "string" } }, "additionalProperties": false }
+    "transformations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/transformation" },
+      "uniqueItems": true
+    },
+    "outfits": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/outfit" },
+      "uniqueItems": true
+    },
+    "selection_screen": {
+      "type": "object",
+      "required": ["background", "animation", "effects", "quote"],
+      "properties": {
+        "background": { "type": "string" },
+        "animation": { "type": "string" },
+        "effects": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "quote": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "portrait": {
+      "type": "object",
+      "required": ["image", "preview"],
+      "properties": {
+        "image": { "type": "string", "minLength": 1 },
+        "preview": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "characterStats": {
+      "type": "object",
+      "required": ["power", "speed", "range", "defense", "ki"],
+      "properties": {
+        "power": { "type": "number", "minimum": 0 },
+        "speed": { "type": "number", "minimum": 0 },
+        "range": { "type": "number", "minimum": 0 },
+        "defense": { "type": "number", "minimum": 0 },
+        "ki": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "characterWeapon": {
+      "type": "object",
+      "required": ["id", "unlocked"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "name": { "type": "string" },
+        "rarity": { "type": "string" },
+        "style": { "type": "string" },
+        "unlocked": { "type": "boolean" },
+        "requires_transformation": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "transformation": {
+      "type": "object",
+      "required": ["id", "name", "unlocked"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "unlocked": { "type": "boolean" },
+        "effects": {
+          "type": "object",
+          "properties": {
+            "weapon": { "type": "string" },
+            "weapon_access": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "attack_multiplier": { "type": "number", "exclusiveMinimum": 0 },
+            "speed_multiplier": { "type": "number", "exclusiveMinimum": 0 },
+            "ultimate_preserved": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "outfit": {
+      "type": "object",
+      "required": ["id", "name", "unlocked"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "unlocked": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  }
 }
