@@ -3,10 +3,9 @@
     { "id": "zichiz", "name": "Zichiz", "data": "../fighters/zichiz/fighter.json" },
     { "id": "yulis", "name": "Yulis", "data": "../fighters/yulis/fighter.json" }
   ],
-  "weapons": {
-    "iron_sword": "../weapons/iron_sword/weapon.json",
-    "laser_gun": "../weapons/laser_gun/weapon.json",
-    "golden_sword": "../weapons/golden_sword/weapon.json"
-  },
+  "weapons": { "iron_sword": "../weapons/iron_sword/weapon.json", "laser_gun": "../weapons/laser_gun/weapon.json", "golden_sword": "../weapons/golden_sword/weapon.json" },
+  "weapon_names": { "iron_sword": "Espada de Hierro", "laser_gun": "Pistola Láser", "golden_sword": "Espada Dorada" },
+  "story_roster": "./story_roster.json",
+  "story_season_1": "./story/season_1.json",
   "engine_config": "./engine.json"
 }
