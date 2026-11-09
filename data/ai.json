@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "difficulty": "normal",
+  "think_interval_frames": 10,
+  "attack_range": 180,
+  "retreat_range": 90,
+  "block_probability": 0.18,
+  "heavy_probability": 0.3,
+  "ultimate_min_ki_fraction": 0.5,
+  "aggression": 0.7
+}

@@ -8,13 +8,11 @@
     "laser_gun": "weapons/laser_gun/weapon.json",
     "golden_sword": "weapons/golden_sword/weapon.json"
   },
-  "weapon_names": {
-    "iron_sword": "Espada de Hierro",
-    "laser_gun": "Pistola Láser",
-    "golden_sword": "Espada Dorada"
-  },
+  "weapon_names": { "iron_sword": "Espada de Hierro", "laser_gun": "Pistola Láser", "golden_sword": "Espada Dorada" },
   "story_roster": "data/story_roster.json",
   "story_season_1": "data/story/season_1.json",
   "story_outfits": "data/story_outfits.json",
+  "interface_config": "data/interface.json",
+  "ai_config": "data/ai.json",
   "engine_config": "data/engine.json"
 }

@@ -1,16 +1,24 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#10131e">
-  <title>Mystery Souls — Fighting Engine</title><link rel="stylesheet" href="./ui/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131e">
+  <meta name="description" content="Mystery Souls: campaña de combate 2D data-driven.">
+  <title>Mystery Souls — El sello final</title>
+  <link rel="stylesheet" href="./ui/styles.css">
 </head>
 <body>
-  <main id="app" aria-live="polite">
-    <header class="topbar"><a class="brand" href="#">MYSTERY <b>SOULS</b></a><span>2D FIGHTING ENGINE</span></header>
-    <section id="select-screen" class="select-screen"></section>
-    <section id="battle-screen" class="battle-screen" hidden><div class="battle-hud"><div id="p1-hud"></div><div id="round-label">MISIÓN 1</div><div id="p2-hud"></div></div><canvas id="battle-canvas" aria-label="Campo de combate"></canvas><footer class="battle-controls"><span>J1: A/D mover · W saltar · F ataque ligero · G pesado · H Ultimate · S bloquear</span><button id="return-select">Abandonar combate</button></footer></section>
-    <section id="rest-screen" class="rest-screen" hidden></section>
-    <p id="status" class="status" role="status"></p>
+  <main id="app">
+    <header class="topbar"><a class="brand" href="#" aria-label="Mystery Souls, inicio">MYSTERY <b>SOULS</b></a><span>2D FIGHTING ENGINE</span></header>
+    <section id="select-screen" class="select-screen" aria-label="Menú y campaña"></section>
+    <section id="battle-screen" class="battle-screen" aria-label="Combate" hidden>
+      <div class="battle-hud"><div id="p1-hud" aria-label="Estado jugador"></div><div id="round-label">MISIÓN 1</div><div id="p2-hud" aria-label="Estado rival"></div></div>
+      <canvas id="battle-canvas" aria-label="Campo de combate"></canvas>
+      <footer class="battle-controls"><span>J1: A/D mover · W saltar · F ligero · G pesado · H Ultimate · S bloquear</span><button id="return-select">Abandonar combate</button></footer>
+    </section>
+    <section id="rest-screen" class="rest-screen" aria-label="Descanso entre misiones" hidden></section>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
   </main>
   <script type="module" src="./ui/app.js"></script>
 </body>

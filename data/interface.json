@@ -1,0 +1,28 @@
+{
+  "app": {
+    "title": "Mystery Souls",
+    "subtitle": "Temporada 1 · El caos y el sello final",
+    "language": "es",
+    "default_screen": "home"
+  },
+  "navigation": {
+    "home": "Menú principal",
+    "story": "Historia",
+    "continue": "Continuar partida",
+    "new_game": "Nueva partida",
+    "mission_select": "Seleccionar misión",
+    "back": "Volver",
+    "main_menu": "Menú principal"
+  },
+  "screens": {
+    "home": { "show_continue": true, "show_new_game": true, "show_mission_select": true },
+    "story": { "show_mission_objective": true, "show_fighter_select": true, "show_outfit_select": true, "show_weapon_select": true },
+    "battle": { "show_health": true, "show_ki": true, "show_controls": true },
+    "rest": { "show_continue": true, "show_save": true, "show_main_menu": true }
+  },
+  "accessibility": { "keyboard_navigation": true, "screen_reader_labels": true, "color_independent_selection": true },
+  "battle_controls_text": "J1: A/D mover · W saltar · F ligero · G pesado · H Ultimate · S bloquear",
+  "loading_text": "Cargando combate…",
+  "save_success_text": "Partida guardada en este dispositivo.",
+  "save_error_text": "No se pudo guardar. Revisa el almacenamiento del navegador."
+}
