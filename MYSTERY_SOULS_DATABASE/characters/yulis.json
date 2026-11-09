@@ -1,0 +1,37 @@
+{
+  "id": "yulis",
+  "name": "Yulis",
+  "rank": "S",
+  "status": "playable",
+  "role": "fighter",
+  "story": null,
+  "base_stats": {
+    "health": 100,
+    "attack": 95,
+    "defense": 90,
+    "speed": 105,
+    "ki": 110
+  },
+  "ultimate": {
+    "id": "laser_cannon_core",
+    "name": "Energía del Cañón Láser",
+    "owner": "character"
+  },
+  "passives": [],
+  "outfits": [
+    { "id": "tech_blue", "name": "Traje Tecnológico Azul", "type": "outfit" },
+    { "id": "tech_pink", "name": "Traje Tecnológico Rosa", "type": "outfit", "unlock": "armor_2" },
+    { "id": "armor_1", "name": "Armadura 1", "type": "armor", "color": "naranja" },
+    { "id": "armor_2", "name": "Armadura 2", "type": "armor", "color": "rosa" }
+  ],
+  "transformations": ["armor_1", "armor_2", "golden_mode"],
+  "equipment": {
+    "default_weapon": "laser_gun",
+    "available_weapons": ["laser_gun", "laser_cannon", "golden_sword"]
+  },
+  "notes": [
+    "La Espada Dorada es un arma y su estilo de combate pertenece al arma.",
+    "golden_sword solo se puede equipar durante golden_mode.",
+    "Energía del Cañón Láser pertenece a Yulis y se conserva al cambiar de arma o transformación."
+  ]
+}

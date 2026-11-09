@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mysterysouls.example/schemas/weapon.schema.json",
+  "title": "Mystery Souls Weapon",
+  "type": "object",
+  "required": ["id", "type", "combat_style", "moveset"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "type": { "const": "weapon" },
+    "name": { "type": "string" },
+    "combat_style": { "type": ["string", "null"] },
+    "changes_style": { "type": "boolean" },
+    "availability": {
+      "type": "object",
+      "properties": {
+        "users": { "type": "array", "items": { "type": "string" } },
+        "required_transformation": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "moveset": {
+      "type": "object",
+      "required": ["light_attack", "heavy_attack", "special"],
+      "properties": {
+        "light_attack": { "$ref": "#/$defs/moveList" },
+        "heavy_attack": { "$ref": "#/$defs/moveList" },
+        "special": { "$ref": "#/$defs/moveList" }
+      },
+      "additionalProperties": false
+    },
+    "stats": {
+      "type": "object",
+      "properties": {
+        "damage": { "type": "number", "minimum": 0 },
+        "range": { "type": "number", "minimum": 0 },
+        "speed": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "moveList": { "type": "array", "items": { "type": "string" } }
+  }
+}

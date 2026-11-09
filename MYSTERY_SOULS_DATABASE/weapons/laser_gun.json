@@ -1,0 +1,12 @@
+{
+  "id": "laser_gun",
+  "type": "weapon",
+  "name": "Laser Gun",
+  "combat_style": "ranged",
+  "moveset": {
+    "light_attack": ["quick_shot", "double_shot", "burst_shot"],
+    "heavy_attack": ["charged_laser"],
+    "special": ["laser_rain", "piercing_beam"]
+  },
+  "stats": { "damage": 90, "range": 100, "speed": 110 }
+}

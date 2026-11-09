@@ -1,0 +1,18 @@
+{
+  "id": "golden_sword",
+  "type": "weapon",
+  "name": "Golden Sword",
+  "combat_style": "melee",
+  "changes_style": true,
+  "availability": {
+    "users": ["zichiz", "yulis"],
+    "required_transformation": "golden_mode"
+  },
+  "moveset": {
+    "light_attack": ["gold_cut", "holy_slash", "rapid_combo"],
+    "heavy_attack": ["judgement_strike"],
+    "special": []
+  },
+  "stats": { "damage": 130, "range": 50, "speed": 100 },
+  "notes": ["This weapon owns its melee combat style and moveset; it does not replace the wielder's Ultimate."]
+}

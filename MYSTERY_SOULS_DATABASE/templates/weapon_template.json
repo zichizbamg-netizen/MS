@@ -1,0 +1,10 @@
+{
+  "id": "weapon_template",
+  "type": "weapon",
+  "name": "",
+  "combat_style": null,
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "availability": { "users": [], "required_transformation": null },
+  "notes": []
+}

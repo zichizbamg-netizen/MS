@@ -1,0 +1,45 @@
+{
+  "id": "zichiz",
+  "name": "Zichiz",
+  "rank": "S",
+  "status": "playable",
+  "role": "fighter",
+  "story": null,
+  "base_stats": {
+    "health": 100,
+    "attack": 100,
+    "defense": 100,
+    "speed": 100,
+    "ki": 100
+  },
+  "ultimate": {
+    "id": "eco_primordial",
+    "name": "Eco Primordial",
+    "owner": "character"
+  },
+  "passives": [],
+  "outfits": [
+    { "id": "normal", "name": "Normal", "type": "default" },
+    { "id": "training", "name": "Entrenamiento", "type": "outfit" },
+    { "id": "armor", "name": "Armadura", "type": "armor" },
+    { "id": "evil", "name": "Maligno", "type": "recolor" },
+    { "id": "evil_armor", "name": "Maligno Armadura", "type": "recolor" }
+  ],
+  "transformations": ["golden_mode"],
+  "equipment": {
+    "default_weapon": "sacred_sword",
+    "available_weapons": [
+      "iron_sword",
+      "great_iron_sword",
+      "demonic_katana",
+      "demonic_sword",
+      "sacred_sword",
+      "golden_sword"
+    ]
+  },
+  "notes": [
+    "El estilo de combate depende del arma equipada.",
+    "Eco Primordial pertenece al personaje y no cambia al equipar otra arma.",
+    "golden_sword solo se puede equipar durante golden_mode."
+  ]
+}

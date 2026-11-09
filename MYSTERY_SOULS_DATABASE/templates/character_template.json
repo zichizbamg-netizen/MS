@@ -1,0 +1,15 @@
+{
+  "id": "character_template",
+  "name": "",
+  "rank": "",
+  "status": "unreleased",
+  "role": "fighter",
+  "story": null,
+  "base_stats": { "health": 0, "attack": 0, "defense": 0, "speed": 0, "ki": 0 },
+  "ultimate": { "id": "", "name": "", "owner": "character" },
+  "passives": [],
+  "outfits": [],
+  "transformations": [],
+  "equipment": { "default_weapon": "", "available_weapons": [] },
+  "notes": []
+}

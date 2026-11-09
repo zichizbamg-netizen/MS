@@ -1,0 +1,10 @@
+{
+  "id": "armor_1",
+  "type": "transformation",
+  "character": "yulis",
+  "name": "Armadura 1",
+  "appearance": { "outfit": "armor_1", "color": "naranja" },
+  "modifiers": { "power_multiplier": 1.5, "speed_multiplier": 0.5 },
+  "weapon_change": { "to": "laser_cannon" },
+  "ultimate_policy": "preserve_character_ultimate"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mysterysouls.example/schemas/character.schema.json",
+  "title": "Mystery Souls Character",
+  "type": "object",
+  "required": ["id", "name", "rank", "status", "role", "base_stats", "ultimate", "transformations", "equipment"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "name": { "type": "string" },
+    "rank": { "type": "string" },
+    "status": { "type": "string" },
+    "role": { "type": "string" },
+    "story": { "type": ["string", "null"] },
+    "base_stats": { "$ref": "#/$defs/stats" },
+    "ultimate": {
+      "type": "object",
+      "required": ["id", "name", "owner"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "owner": { "const": "character" }
+      },
+      "additionalProperties": false
+    },
+    "passives": { "type": "array" },
+    "outfits": { "type": "array", "items": { "type": "object" } },
+    "transformations": { "type": "array", "items": { "type": "string" } },
+    "equipment": {
+      "type": "object",
+      "required": ["default_weapon", "available_weapons"],
+      "properties": {
+        "default_weapon": { "type": "string" },
+        "available_weapons": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stats": {
+      "type": "object",
+      "required": ["health", "attack", "defense", "speed", "ki"],
+      "properties": {
+        "health": { "type": "number", "minimum": 0 },
+        "attack": { "type": "number", "minimum": 0 },
+        "defense": { "type": "number", "minimum": 0 },
+        "speed": { "type": "number", "minimum": 0 },
+        "ki": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  }
+}

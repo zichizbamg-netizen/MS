@@ -1,0 +1,11 @@
+{
+  "id": "armor_2",
+  "type": "transformation",
+  "character": "yulis",
+  "name": "Armadura 2",
+  "appearance": { "outfit": "armor_2", "color": "rosa" },
+  "modifiers": { "power_multiplier": 2.0, "speed_multiplier": 1.2 },
+  "weapon_change": { "to": "laser_cannon" },
+  "unlock": { "requires": ["armor_1"] },
+  "ultimate_policy": "preserve_character_ultimate"
+}

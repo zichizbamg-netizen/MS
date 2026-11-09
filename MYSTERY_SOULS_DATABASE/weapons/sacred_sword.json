@@ -1,0 +1,9 @@
+{
+  "id": "sacred_sword",
+  "type": "weapon",
+  "name": "Sacred Sword",
+  "combat_style": null,
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "notes": ["Combat style and moveset are owned by this weapon."]
+}

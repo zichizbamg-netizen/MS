@@ -1,0 +1,9 @@
+{
+  "id": "laser_cannon",
+  "type": "weapon",
+  "name": "Laser Cannon",
+  "combat_style": "ranged",
+  "moveset": { "light_attack": [], "heavy_attack": [], "special": [] },
+  "stats": {},
+  "notes": ["Used by Yulis's armor transformations; moveset and stats are not yet specified."]
+}

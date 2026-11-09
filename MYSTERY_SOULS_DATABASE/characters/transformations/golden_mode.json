@@ -1,0 +1,16 @@
+{
+  "id": "golden_mode",
+  "type": "transformation",
+  "name": "Golden Mode",
+  "users": ["zichiz", "yulis"],
+  "weapon_access": {
+    "allowed": ["golden_sword"],
+    "restriction": "This weapon can only be equipped while this transformation is active."
+  },
+  "ultimate_policy": "preserve_character_ultimate",
+  "modifiers": {},
+  "notes": [
+    "Golden Mode belongs to the character; golden_sword remains a separate weapon.",
+    "Each character retains their own Ultimate while using golden_sword."
+  ]
+}
