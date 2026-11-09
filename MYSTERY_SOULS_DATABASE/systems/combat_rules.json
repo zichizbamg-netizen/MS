@@ -1,0 +1,64 @@
+{
+  "id": "combat_rules_v1",
+  "status": "proposed_defaults",
+  "ownership": {
+    "character": ["base_stats", "passives", "transformations", "ultimate"],
+    "weapon": ["combat_style", "moveset", "weapon_stats"],
+    "engine": ["hit_detection", "damage_resolution", "state_machine", "camera"]
+  },
+  "runtime_build": {
+    "order": ["character_base", "transformation_modifiers", "equipped_weapon", "character_ultimate"],
+    "ultimate_owner": "character",
+    "weapon_style_owner": "weapon",
+    "do_not_mutate_source_records": true
+  },
+  "equipment_rules": {
+    "golden_sword": {
+      "allowed_characters": ["zichiz", "yulis"],
+      "required_transformation": "golden_mode",
+      "invalid_equip_behavior": "reject_and_keep_current_weapon"
+    },
+    "weapon_switch": {
+      "allowed_states": ["neutral", " 이동"],
+      "blocked_states": ["attacking", "hitstun", "guard_break", "ultimate"],
+      "switch_lock_seconds": 0.35
+    }
+  },
+  "damage": {
+    "formula": "max(1, (base_attack * move_power + weapon_damage) * transformation_power * combo_scaling * (100 / (100 + target_defense)))",
+    "move_power_default": 1.0,
+    "combo_scaling": {
+      "start": 1.0,
+      "per_hit_reduction": 0.08,
+      "minimum": 0.4,
+      "reset_after_seconds": 2.0
+    },
+    "transformation_power_default": 1.0,
+    "note": "Proposed formula; calibrate against actual stat ranges and playtest results."
+  },
+  "combat_states": {
+    "states": ["neutral", "attacking", "guarding", "dodging", "hitstun", "guard_break", "ultimate"],
+    "guard_break_seconds": 1.1,
+    "hitstun_seconds": 0.35,
+    "dodge_invulnerability_seconds": 0.18,
+    "buffered_input_seconds": 0.12
+  },
+  "resources": {
+    "ki_max_source": "character.base_stats.ki",
+    "ultimate_cost_fraction": 0.5,
+    "special_cost_fraction": 0.15,
+    "guard_resource_name": "guard",
+    "guard_max": 100,
+    "guard_regen_per_second": 18,
+    "guard_drain_per_second": 24,
+    "guard_break_at": 0
+  },
+  "combat_feedback": {
+    "show_damage_numbers": true,
+    "show_hit_confirm": true,
+    "show_combo_counter_from_hits": 2,
+    "screen_shake_intensity_range": [0, 0.35],
+    "screen_shake_duration_max_seconds": 0.2,
+    "reduce_motion_setting_supported": true
+  }
+}

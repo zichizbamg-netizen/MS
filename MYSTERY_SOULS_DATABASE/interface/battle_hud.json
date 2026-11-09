@@ -1,0 +1,36 @@
+{
+  "id": "battle_hud_v1",
+  "status": "proposed_spec",
+  "layout": {
+    "anchor": "safe_area",
+    "scale_setting": { "min": 0.8, "max": 1.3, "default": 1.0 },
+    "critical_info_priority": ["health", "ki", "ultimate", "active_transformation", "equipped_weapon", "guard", "combo"]
+  },
+  "player_panels": {
+    "health": { "visible": true, "value_source": "runtime.health", "show_numeric_value": true, "show_low_health_warning_fraction": 0.25 },
+    "ki": { "visible": true, "value_source": "runtime.ki", "show_numeric_value": false },
+    "guard": { "visible": true, "value_source": "runtime.guard", "show_break_warning": true },
+    "ultimate": { "visible": true, "value_source": "character.ultimate", "show_charge": true, "show_ready_state": true },
+    "weapon": { "visible": true, "value_source": "runtime.equipped_weapon", "show_combat_style": true },
+    "transformation": { "visible": true, "value_source": "runtime.active_transformation", "show_timer_if_timed": true },
+    "combo": { "visible": true, "show_from_hits": 2, "announce_best_combo": false }
+  },
+  "prompts": {
+    "contextual_actions": true,
+    "show_weapon_switch_prompt_when_allowed": true,
+    "show_locked_weapon_reason": true,
+    "golden_sword_lock_message_key": "weapon.requires_golden_mode"
+  },
+  "accessibility": {
+    "color_independent_status_cues": true,
+    "high_contrast_mode": true,
+    "text_scale_setting": { "min": 0.85, "max": 1.5, "default": 1.0 },
+    "screen_reader_labels": true,
+    "reduced_motion": true,
+    "disable_screen_shake": true
+  },
+  "localization": {
+    "default_locale": "es",
+    "use_message_keys": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mysterysouls.example/schemas/interface-config.schema.json",
+  "title": "Mystery Souls Interface Configuration",
+  "type": "object",
+  "required": ["id", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "status": { "enum": ["proposed_spec", "approved"] },
+    "layout": { "type": "object" },
+    "player_panels": { "type": "object" },
+    "prompts": { "type": "object" },
+    "accessibility": { "type": "object" },
+    "localization": { "type": "object" },
+    "flow": { "type": "array", "items": { "type": "string" } },
+    "loadout_preview": { "type": "object" },
+    "validation": { "type": "object" },
+    "golden_sword_hint": { "type": "object" }
+  },
+  "additionalProperties": false
+}

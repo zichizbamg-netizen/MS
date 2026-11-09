@@ -1,0 +1,29 @@
+{
+  "id": "character_select_v1",
+  "status": "proposed_spec",
+  "flow": ["select_character", "select_available_transformation", "select_available_weapon", "confirm_loadout"],
+  "loadout_preview": {
+    "show_base_stats": true,
+    "show_transformed_stat_deltas": true,
+    "show_weapon_combat_style": true,
+    "show_weapon_moveset_preview": true,
+    "show_character_ultimate": true,
+    "show_ultimate_owner_label": true
+  },
+  "validation": {
+    "validate_weapon_availability": true,
+    "validate_required_transformation": true,
+    "preserve_character_ultimate_on_weapon_change": true,
+    "invalid_loadout_action": "disable_confirm_and_explain"
+  },
+  "golden_sword_hint": {
+    "message_key": "weapon.golden_sword.golden_mode_only",
+    "show_for_characters": ["zichiz", "yulis"]
+  },
+  "accessibility": {
+    "keyboard_navigation": true,
+    "controller_navigation": true,
+    "screen_reader_labels": true,
+    "color_independent_selection_state": true
+  }
+}

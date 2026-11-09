@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mysterysouls.example/schemas/combat-rules.schema.json",
+  "title": "Mystery Souls Combat Rules Configuration",
+  "type": "object",
+  "required": ["id", "status", "ownership", "runtime_build", "equipment_rules", "damage", "combat_states", "resources"],
+  "properties": {
+    "id": { "type": "string" },
+    "status": { "enum": ["proposed_defaults", "approved"] },
+    "ownership": { "type": "object" },
+    "runtime_build": { "type": "object" },
+    "equipment_rules": { "type": "object" },
+    "damage": { "type": "object" },
+    "combat_states": { "type": "object" },
+    "resources": { "type": "object" },
+    "combat_feedback": { "type": "object" }
+  },
+  "additionalProperties": false
+}
