@@ -39,9 +39,9 @@ export class FightingEngine {
   async loadFighter(id, requestedWeapon, requestedOutfit) {
     let bundle = this.roster[id];
     if (!bundle) {
-      const entry = this.catalog.fighters.find((fighter) => fighter.id === id);
+      const entry = this.catalog.characters.find((character) => character.id === id);
       if (!entry) throw new Error(`Personaje no encontrado en el catálogo: ${id}`);
-      bundle = await loadCharacterBundle(entry.data.replace(/\/fighter\.json$/, ''));
+      bundle = await loadCharacterBundle(entry.data);
     }
     const fighterData = bundle.fighter;
     const weaponId = requestedWeapon || fighterData.default_weapon;

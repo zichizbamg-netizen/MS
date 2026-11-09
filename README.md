@@ -9,7 +9,7 @@ MS/
 ├── engine/             # Carga de datos, input, simulación y coordinación
 ├── assets/             # Sprites, retratos, audio y fondos
 ├── data/               # Catálogos y configuración de interfaz/IA
-├── characters/         # Datos de personajes separados por responsabilidad
+├── characters/         # Datos y recursos propios de cada personaje
 ├── weapons/            # Arma, moveset, frame data, animaciones, efectos y audio
 ├── stages/             # Escenarios y configuración de combate
 ├── story/              # Campañas y misiones
@@ -18,7 +18,7 @@ MS/
 └── camera/             # Cámara 2D
 ```
 
-Personajes principales: `characters/<id>/character.json`, `stats.json`, `ultimate.json`, `transformations.json` y `outfits.json`. El motor los carga desde el catálogo; los datos de armas siguen separados de los personajes. Los personajes de historia que todavía no tienen directorio usan temporalmente `data/story_roster.json` hasta migrarse con el mismo formato.
+Los personajes principales viven en `characters/<id>/` y se cargan desde `data/catalog.json` (`characters`). El runtime busca los datos de personajes en esa carpeta; la simulación y las reglas de combate permanecen separadas en `engine/` y `combat/`. Los registros de personajes secundarios de la historia siguen temporalmente en `data/story_roster.json` hasta su migración al mismo formato.
 
 ## Ejecutar
 

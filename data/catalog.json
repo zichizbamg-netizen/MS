@@ -1,5 +1,5 @@
 {
-  "fighters": [
+  "characters": [
     { "id": "zichiz", "name": "Zichiz", "data": "characters/zichiz" },
     { "id": "yulis", "name": "Yulis", "data": "characters/yulis" }
   ],
@@ -30,5 +30,5 @@
   "story_outfits": "data/story_outfits.json",
   "interface_config": "data/interface.json",
   "ai_config": "data/ai.json",
-  "engine_config": "stages/stage_1.json"
+  "engine_config": "stages/engine_config.json"
 }
